@@ -96,4 +96,4 @@ Built as a personal exploration of real-time voice AI pipelines, combining front
 
 ---
 
-*This repository is for portfolio display purposes. Source code is proprietary.*
+*Made by [Shashank Goel](https://github.com/Shashank-Ge)*
