@@ -30,8 +30,8 @@ export default function Home() {
     const handler = (e: KeyboardEvent) => {
       if (e.code === 'Space' && e.target === document.body) {
         e.preventDefault()
-        if (status === 'idle') startListening()
-        else if (status === 'listening' || status === 'speaking') stop()
+        if (status === 'idle' || status === 'speaking') startListening()
+        else if (status === 'listening') stop()
       }
     }
     window.addEventListener('keydown', handler)
@@ -114,7 +114,24 @@ export default function Home() {
     audio.play()
   }
 
+  const stopAudio = () => {
+    if (audioRef.current) {
+      audioRef.current.onended = null
+      audioRef.current.pause()
+      audioRef.current.src = ''
+      audioRef.current = null
+    }
+    setStatus('idle')
+  }
+
   const startListening = () => {
+    // Kill any in-progress TTS playback before opening the mic
+    if (audioRef.current) {
+      audioRef.current.onended = null
+      audioRef.current.pause()
+      audioRef.current.src = ''
+      audioRef.current = null
+    }
     const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
     if (SR) {
       const recognition = new SR()
@@ -395,7 +412,7 @@ export default function Home() {
             <span style={{ fontSize: 13, color: '#94a3b8' }}>{label}</span>
           </div>
 
-          <button onClick={status === 'idle' ? startListening : stop} style={{
+          <button onClick={status === 'listening' ? stop : startListening} style={{
             width: 64, height: 64, borderRadius: '50%',
             cursor: 'pointer', fontSize: 24,
             background: status === 'idle'
