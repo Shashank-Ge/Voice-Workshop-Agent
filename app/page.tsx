@@ -317,7 +317,7 @@ export default function Home() {
               textAlign: 'center', color: '#64748b', fontSize: 14,
               padding: '3rem 0', lineHeight: 2
             }}>
-              Start a conversation with {currentPersona.character}<br/>
+              Start a conversation with {voices.find(v => v.id === voiceId)?.name ?? currentPersona.character}<br/>
               <span style={{ fontSize: 12, color: '#475569' }}>Press Space or click the mic below</span>
             </div>
           )}
