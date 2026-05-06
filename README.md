@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧱 LEGO Workshop Voice Agent
+
+A real-time voice AI agent for LEGO Serious Play workshops. Speak to AI-powered facilitators, coaches, and creative directors — and hear them respond in natural voice, instantly.
+
+Built with **Next.js**, **Groq** (LLaMA 3.3 70B), and **ElevenLabs** TTS.
+
+---
+
+## Features
+
+- 🎙 **Voice-first interface** — speak naturally, no typing needed
+- ⚡ **Ultra-low latency** — Groq's LPU inference + ElevenLabs Flash TTS
+- 🧱 **3 AI personas** — Workshop Facilitator, Team Coach, Creative Director
+- 🔊 **5 voice options** — switch voices mid-session
+- 📊 **Live latency metrics** — STT / LLM / TTS breakdown
+- 📥 **Export transcripts** — download full session as `.txt`
+- ⌨️ **Keyboard shortcut** — Space bar to start/stop
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 15 (App Router) |
+| LLM | Groq · LLaMA 3.3 70B Versatile |
+| TTS | ElevenLabs · Flash v2.5 |
+| STT | Web Speech API (browser-native) / Whisper fallback |
+| Deployment | Vercel |
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone and install
+
+```bash
+git clone <repo-url>
+cd voice-workshop-agent
+npm install
+```
+
+### 2. Set up environment variables
+
+Create a `.env.local` file in the root:
+
+```env
+GROQ_API_KEY=your_groq_api_key
+ELEVENLABS_API_KEY=your_elevenlabs_api_key
+ELEVENLABS_VOICE_ID=EXAVITQu4vr4xnSDxMaL
+```
+
+Get your keys:
+- [Groq Console](https://console.groq.com) — free tier available
+- [ElevenLabs](https://elevenlabs.io) — free tier available
+
+### 3. Run locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment
 
-## Learn More
+Deploy to Vercel in one click:
 
-To learn more about Next.js, take a look at the following resources:
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> Add your `GROQ_API_KEY` and `ELEVENLABS_API_KEY` as environment variables in the Vercel dashboard.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+app/
+  page.tsx              # Main voice interface
+  api/
+    chat/route.ts       # Groq LLM streaming endpoint
+    speak/route.ts      # ElevenLabs TTS endpoint
+    transcribe/route.ts # Whisper STT fallback endpoint
+lib/
+  personas.ts           # AI persona definitions + voice list
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## License
+
+MIT
