@@ -30,50 +30,6 @@ Built with **Next.js**, **Groq** (LLaMA 3.3 70B), and **ElevenLabs** TTS.
 
 ---
 
-## Getting Started
-
-### 1. Clone and install
-
-```bash
-git clone <repo-url>
-cd voice-workshop-agent
-npm install
-```
-
-### 2. Set up environment variables
-
-Create a `.env.local` file in the root:
-
-```env
-GROQ_API_KEY=your_groq_api_key
-ELEVENLABS_API_KEY=your_elevenlabs_api_key
-ELEVENLABS_VOICE_ID=EXAVITQu4vr4xnSDxMaL
-```
-
-Get your keys:
-- [Groq Console](https://console.groq.com) — free tier available
-- [ElevenLabs](https://elevenlabs.io) — free tier available
-
-### 3. Run locally
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000)
-
----
-
-## Deployment
-
-Deploy to Vercel in one click:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
-
-> Add your `GROQ_API_KEY` and `ELEVENLABS_API_KEY` as environment variables in the Vercel dashboard.
-
----
-
 ## Project Structure
 
 ```

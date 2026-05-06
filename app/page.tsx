@@ -314,11 +314,11 @@ export default function Home() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 20, minHeight: 200 }}>
           {messages.length === 0 && (
             <div style={{
-              textAlign: 'center', color: '#334155', fontSize: 14,
+              textAlign: 'center', color: '#64748b', fontSize: 14,
               padding: '3rem 0', lineHeight: 2
             }}>
               Start a conversation with {currentPersona.character}<br/>
-              <span style={{ fontSize: 12, color: '#1e293b' }}>Press Space or click the mic below</span>
+              <span style={{ fontSize: 12, color: '#475569' }}>Press Space or click the mic below</span>
             </div>
           )}
           {messages.map((m, i) => (
@@ -392,7 +392,7 @@ export default function Home() {
               width: 8, height: 8, borderRadius: '50%', background: color, flexShrink: 0,
               boxShadow: pulse ? `0 0 0 4px ${color}44` : 'none', transition: 'all 0.3s'
             }} />
-            <span style={{ fontSize: 13, color: '#64748b' }}>{label}</span>
+            <span style={{ fontSize: 13, color: '#94a3b8' }}>{label}</span>
           </div>
 
           <button onClick={status === 'idle' ? startListening : stop} style={{
@@ -412,7 +412,7 @@ export default function Home() {
           </button>
 
           <div style={{ minWidth: 160, textAlign: 'right' }}>
-            <span style={{ fontSize: 11, color: '#334155' }}>Click again to send</span>
+            <span style={{ fontSize: 11, color: '#64748b' }}>Click again to send</span>
           </div>
         </div>
       </div>
